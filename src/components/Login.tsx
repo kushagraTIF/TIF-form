@@ -1,27 +1,35 @@
 "use client";
 
-import LockIcon from "@/assets/Lock.svg";
-import LockIconOpen from "@/assets/LockOpen.svg";
+import { ILoginDetails } from "@/interface/form";
+import { loginSchema } from "@/schemas";
 import {
   Box,
   Button,
   Flex,
-  FormControl,
-  FormLabel,
   Heading,
-  Input,
-  InputGroup,
-  InputRightElement,
   Stack,
   useColorModeValue,
 } from "@chakra-ui/react";
-import Image from "next/image";
-import FormHeaderContent from "./FormHeaderContent";
+import { useFormik } from "formik";
 import { HTMLInputTypeAttribute, useState } from "react";
+import FormHeaderContent from "./FormHeaderContent";
+import FormInput from "./FormInput";
 
 const Login = () => {
   const [passwordType, setPasswordType] =
     useState<HTMLInputTypeAttribute>("password");
+
+  const { handleChange, errors, touched, handleBlur, handleSubmit, values } =
+    useFormik<ILoginDetails>({
+      initialValues: {
+        email: "",
+        password: "",
+      },
+      validationSchema: loginSchema,
+      onSubmit: (values) => {
+        console.log({ values });
+      },
+    });
 
   const handleToggle = () => {
     if (passwordType === "password") {
@@ -48,7 +56,7 @@ const Login = () => {
           >
             <FormHeaderContent />
             <Stack marginTop={"20px"} spacing={4}>
-              <FormControl id='email'>
+              {/* <FormControl id='email'>
                 <FormLabel
                   textColor={"#737791"}
                   fontSize={"0.875rem"}
@@ -96,45 +104,72 @@ const Login = () => {
                     )}
                   </InputRightElement>
                 </InputGroup>
-              </FormControl>
-              <Box
-                display={"flex"}
-                alignItems={"center"}
-                justifyContent={"center"}
-                width={"full"}
-                marginBottom={"18px"}
-              >
-                <Heading
-                  fontWeight={400}
-                  textAlign={"center"}
-                  textColor={"#1c294a"}
-                  size='sm'
+              </FormControl> */}
+              <form onSubmit={handleSubmit}>
+                <FormInput
+                  isRequired={true}
+                  type='email'
+                  label='Email'
+                  name='email'
+                  placeholder='Work mail address (eg: joe@example.com)'
+                  value={values?.email}
+                  error={errors?.email}
+                  touched={touched?.email}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+
+                <FormInput
+                  isRequired={true}
+                  type='password'
+                  label='Password'
+                  name='password'
+                  value={values?.password}
+                  error={errors?.password}
+                  touched={touched?.password}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                />
+
+                <Box
+                  display={"flex"}
+                  alignItems={"center"}
+                  justifyContent={"center"}
+                  width={"full"}
+                  marginBottom={"18px"}
                 >
-                  Don't have an account ?
-                </Heading>
-                <Heading
-                  textColor={"#151d48"}
-                  paddingLeft={"5px"}
-                  textAlign={"center"}
-                  size='sm'
-                >
-                  Register
-                </Heading>
-              </Box>
-              <Stack spacing={10}>
-                <Button
-                  type='submit'
-                  padding={"25px"}
-                  margin={"0 auto"}
-                  bg={"#151d48"}
-                  color={"white"}
-                  _hover={{
-                    bg: "#151d48",
-                  }}
-                >
-                  Sign in
-                </Button>
-              </Stack>
+                  <Heading
+                    fontWeight={400}
+                    textAlign={"center"}
+                    textColor={"#1c294a"}
+                    size='sm'
+                  >
+                    Don't have an account ?
+                  </Heading>
+                  <Heading
+                    textColor={"#151d48"}
+                    paddingLeft={"5px"}
+                    textAlign={"center"}
+                    size='sm'
+                  >
+                    Register
+                  </Heading>
+                </Box>
+                <Stack spacing={10}>
+                  <Button
+                    type='submit'
+                    padding={"25px"}
+                    margin={"0 auto"}
+                    bg={"#151d48"}
+                    color={"white"}
+                    _hover={{
+                      bg: "#151d48",
+                    }}
+                  >
+                    Sign in
+                  </Button>
+                </Stack>
+              </form>
             </Stack>
           </Box>
         </Stack>

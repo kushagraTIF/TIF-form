@@ -1,0 +1,77 @@
+import React from "react";
+import { Input, InputLeftAddon } from "@chakra-ui/react";
+import FormWrapper from "./FormWrapper";
+import { IFormInputProps } from "@/interface/form";
+
+const FormInput = React.forwardRef<HTMLInputElement, IFormInputProps>(
+  (
+    {
+      variant,
+      name,
+      label,
+      placeholder,
+      type,
+      value,
+      onChange,
+      onBlur,
+      error,
+      touched,
+      inputProps = {},
+      children,
+      helperText,
+      wrapperProps = {},
+      labelProps = {},
+      leftAddOn,
+    },
+    ref
+  ) => {
+    return (
+      <FormWrapper
+        variant={variant}
+        isInvalid={Boolean(error && touched)}
+        wrapperProps={wrapperProps}
+        helperText={helperText}
+        label={label}
+        touched={touched}
+        error={error as string}
+        labelProps={labelProps}
+      >
+        {leftAddOn && (
+          <InputLeftAddon h='auto' py='10px'>
+            {leftAddOn}
+          </InputLeftAddon>
+        )}
+        <Input
+          name={name}
+          placeholder={placeholder}
+          type={type}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          // styles
+          width='100%'
+          maxHeight='none !important'
+          minW='272px'
+          height='45px'
+          fontWeight='500'
+          px='20px'
+          border='1px solid #c0bcd7'
+          bg='white'
+          borderRadius='8px'
+          focusBorderColor='primary'
+          errorBorderColor='red.500'
+          _placeholder={{
+            color: "blackAlpha.400",
+          }}
+          ref={ref}
+          {...inputProps}
+        />
+        {children}
+      </FormWrapper>
+    );
+  }
+);
+
+FormInput.displayName = "FormInput";
+
+export default FormInput;
