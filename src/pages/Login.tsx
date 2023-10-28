@@ -12,8 +12,11 @@ import {
 } from "@chakra-ui/react";
 import { useFormik } from "formik";
 import { HTMLInputTypeAttribute, useState } from "react";
-import FormHeaderContent from "./FormHeaderContent";
-import FormInput from "./FormInput";
+import FormHeaderContent from "@/components/FormHeaderContent";
+import FormInput from "@/components/FormInput";
+import LockIcon from "@/assets/Lock.svg";
+import LockIconOpen from "@/assets/LockOpen.svg";
+import Image from "next/image";
 
 const Login = () => {
   const [passwordType, setPasswordType] =
@@ -56,55 +59,6 @@ const Login = () => {
           >
             <FormHeaderContent />
             <Stack marginTop={"20px"} spacing={4}>
-              {/* <FormControl id='email'>
-                <FormLabel
-                  textColor={"#737791"}
-                  fontSize={"0.875rem"}
-                  fontWeight={600}
-                >
-                  Email address
-                </FormLabel>
-                <Input
-                  isRequired
-                  borderRadius={"10px"}
-                  fontWeight={400}
-                  padding={"20px 15px"}
-                  fontSize={"15px"}
-                  type='email'
-                  placeholder='Work mail address (eg: joe@example.com)'
-                />
-              </FormControl>
-              <FormControl id='password'>
-                <FormLabel
-                  textColor={"#737791"}
-                  fontSize={"0.875rem"}
-                  fontWeight={600}
-                >
-                  Password
-                </FormLabel>
-                <InputGroup>
-                  <Input
-                    isRequired
-                    borderRadius={"10px"}
-                    fontWeight={400}
-                    padding={"20px 15px"}
-                    fontSize={"15px"}
-                    type={passwordType}
-                  />
-                  <InputRightElement onClick={handleToggle} cursor={"pointer"}>
-                    {passwordType === "password" ? (
-                      <Image src={LockIcon} alt='logo' width={20} height={20} />
-                    ) : (
-                      <Image
-                        src={LockIconOpen}
-                        alt='logo'
-                        width={20}
-                        height={20}
-                      />
-                    )}
-                  </InputRightElement>
-                </InputGroup>
-              </FormControl> */}
               <form onSubmit={handleSubmit}>
                 <FormInput
                   isRequired={true}
@@ -121,7 +75,7 @@ const Login = () => {
 
                 <FormInput
                   isRequired={true}
-                  type='password'
+                  type={passwordType}
                   label='Password'
                   name='password'
                   value={values?.password}
@@ -129,6 +83,18 @@ const Login = () => {
                   touched={touched?.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
+                  rightAddOn={
+                    <Image
+                      onClick={handleToggle}
+                      src={
+                        passwordType === "password" ? LockIcon : LockIconOpen
+                      }
+                      alt='logo'
+                      width={20}
+                      height={20}
+                      style={{ cursor: "pointer" }}
+                    />
+                  }
                 />
 
                 <Box
@@ -147,6 +113,7 @@ const Login = () => {
                     Don't have an account ?
                   </Heading>
                   <Heading
+                    cursor={"pointer"}
                     textColor={"#151d48"}
                     paddingLeft={"5px"}
                     textAlign={"center"}

@@ -1,5 +1,10 @@
 import React from "react";
-import { Input, InputLeftAddon } from "@chakra-ui/react";
+import {
+  Input,
+  InputLeftAddon,
+  InputRightAddon,
+  InputRightElement,
+} from "@chakra-ui/react";
 import FormWrapper from "./FormWrapper";
 import { IFormInputProps } from "@/interface/form";
 
@@ -22,6 +27,7 @@ const FormInput = React.forwardRef<HTMLInputElement, IFormInputProps>(
       wrapperProps = {},
       labelProps = {},
       leftAddOn,
+      rightAddOn,
     },
     ref
   ) => {
@@ -40,6 +46,11 @@ const FormInput = React.forwardRef<HTMLInputElement, IFormInputProps>(
           <InputLeftAddon h='auto' py='10px'>
             {leftAddOn}
           </InputLeftAddon>
+        )}
+        {rightAddOn && (
+          <InputRightElement h='auto' py='10px'>
+            {rightAddOn}
+          </InputRightElement>
         )}
         <Input
           name={name}
@@ -66,6 +77,7 @@ const FormInput = React.forwardRef<HTMLInputElement, IFormInputProps>(
           ref={ref}
           {...inputProps}
         />
+
         {children}
       </FormWrapper>
     );

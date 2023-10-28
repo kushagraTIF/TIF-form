@@ -11,6 +11,7 @@ export interface IFormInputProps {
   name: string;
   variant?: string;
   leftAddOn?: React.ReactNode;
+  rightAddOn?: React.ReactNode;
   label?: React.ReactNode;
   placeholder?: string;
   type?: HTMLInputTypeAttribute;
