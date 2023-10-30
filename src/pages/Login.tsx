@@ -48,6 +48,7 @@ const Login = () => {
         minH={"100vh"}
         align={"center"}
         justify={"center"}
+        overflowX={"hidden"}
         bg={useColorModeValue("gray.50", "gray.800")}
       >
         <Stack mx={"auto"} maxW={"xl"} py={2} px={6}>

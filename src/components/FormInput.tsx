@@ -66,10 +66,10 @@ const FormInput = React.forwardRef<HTMLInputElement, IFormInputProps>(
           height='45px'
           fontWeight='500'
           px='20px'
-          border='1px solid #c0bcd7'
+          border='1px solid #e2e8f0'
           bg='white'
           borderRadius='8px'
-          focusBorderColor='primary'
+          focusBorderColor='#3212BF'
           errorBorderColor='red.500'
           _placeholder={{
             color: "blackAlpha.400",
