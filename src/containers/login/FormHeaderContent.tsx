@@ -35,8 +35,8 @@ const FormHeaderContent = () => {
         >
           <Heading
             textAlign={"center"}
-            size='md'
-            fontWeight={"bold"}
+            fontSize={"23px"}
+            fontWeight={"700"}
             textColor={"#151d48"}
           >
             Welcome Back
@@ -47,7 +47,7 @@ const FormHeaderContent = () => {
             textColor={"#737791"}
             fontSize='14px'
             textAlign={"center"}
-            width={"80%"}
+            width={"60%"}
           >
             Signin with the work email and manage all the data connections at
             your work space
@@ -55,16 +55,29 @@ const FormHeaderContent = () => {
         </Box>
         <Stack spacing={10} margin={"12px 0px"}>
           <Button
+            display={"inline-flex"}
+            alignItems={"center"}
+            justifyContent={"center"}
+            gap={"18px"}
+            height={"auto"}
+            maxHeight={"none"}
+            whiteSpace={"nowrap"}
             borderRadius={"16px"}
-            padding={"24px 0px"}
+            paddingY={"18px"}
+            minHeight={"44px"}
             leftIcon={
-              <Image src={MicrosoftIcon} alt='logo' width={20} height={20} />
+              <Image
+                src={MicrosoftIcon}
+                alt='logo'
+                width={"25"}
+                height={"25"}
+              />
             }
-            borderColor={"#e2e8f0"}
+            borderColor={"#eaebf1"}
             variant={"outline"}
-            color={"black"}
+            color={"#151d48"}
             fontWeight={500}
-            fontSize={"sm"}
+            fontSize={"15px"}
             _hover={{
               bg: "gray.200",
             }}
@@ -79,7 +92,7 @@ const FormHeaderContent = () => {
           width={"full"}
           gap={"5px"}
         >
-          <Box border={"1px"} borderColor={"gray.100"} width={"full"} />
+          <Box border={"0.9px solid #eaebf1"} width={"full"} />
           <Text
             fontWeight={500}
             textColor={"#151d48"}
@@ -88,7 +101,7 @@ const FormHeaderContent = () => {
           >
             or
           </Text>
-          <Box border={"1px"} borderColor={"gray.100"} width={"full"} />
+          <Box border={"0.9px solid #eaebf1"} width={"full"} />
         </Box>
       </Stack>
     </div>

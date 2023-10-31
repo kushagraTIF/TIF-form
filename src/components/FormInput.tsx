@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Input,
-  InputLeftAddon,
-  InputRightAddon,
-  InputRightElement,
-} from "@chakra-ui/react";
+import { Input, InputLeftAddon, InputRightElement } from "@chakra-ui/react";
 import FormWrapper from "./FormWrapper";
 import { IFormInputProps } from "@/interface/form";
 
@@ -47,11 +42,11 @@ const FormInput = React.forwardRef<HTMLInputElement, IFormInputProps>(
             {leftAddOn}
           </InputLeftAddon>
         )}
-        {rightAddOn && (
-          <InputRightElement h='auto' py='10px'>
+        {/* {rightAddOn && (
+          <InputRightElement minHeight={"50px"} height={"auto"}>
             {rightAddOn}
           </InputRightElement>
-        )}
+        )} */}
         <Input
           name={name}
           placeholder={placeholder}
@@ -61,18 +56,24 @@ const FormInput = React.forwardRef<HTMLInputElement, IFormInputProps>(
           onBlur={onBlur}
           // styles
           width='100%'
+          outline={"2px solid #0000"}
           maxHeight='none !important'
           minW='272px'
-          height='45px'
-          fontWeight='500'
-          px='20px'
-          border='1px solid #e2e8f0'
+          minHeight={"50px"}
+          height={"auto"}
+          fontWeight='400'
+          fontSize={"15px"}
+          paddingY={"16px"}
+          paddingX={"32px"}
+          border='1px solid #eaebf1'
+          backgroundColor={"#fff"}
           bg='white'
-          borderRadius='8px'
+          borderRadius='10px'
           focusBorderColor='#3212BF'
           errorBorderColor='red.500'
           _placeholder={{
-            color: "blackAlpha.400",
+            color: "gray.500",
+            fontSize: "15px",
           }}
           ref={ref}
           {...inputProps}

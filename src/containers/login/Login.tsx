@@ -1,22 +1,16 @@
 "use client";
 
-import { ILoginDetails } from "@/interface/form";
-import { loginSchema } from "@/schemas";
-import {
-  Box,
-  Button,
-  Flex,
-  Heading,
-  Stack,
-  useColorModeValue,
-} from "@chakra-ui/react";
-import { useFormik } from "formik";
-import { HTMLInputTypeAttribute, useState } from "react";
-import FormHeaderContent from "@/components/FormHeaderContent";
-import FormInput from "@/components/FormInput";
 import LockIcon from "@/assets/Lock.svg";
 import LockIconOpen from "@/assets/LockOpen.svg";
+import { AppButton } from "@/components/AppButton";
+import FormHeaderContent from "@/containers/login/FormHeaderContent";
+import FormInput from "@/components/FormInput";
+import { ILoginDetails } from "@/interface/form";
+import { loginSchema } from "@/schemas";
+import { Box, Flex, Heading, InputRightElement, Stack } from "@chakra-ui/react";
+import { useFormik } from "formik";
 import Image from "next/image";
+import { HTMLInputTypeAttribute, useState } from "react";
 
 const Login = () => {
   const [passwordType, setPasswordType] =
@@ -46,18 +40,22 @@ const Login = () => {
   return (
     <>
       <Flex
-        minH={"100vh"}
-        align={"center"}
-        justify={"center"}
+        height={"100vh"}
+        width={"100vw"}
+        alignItems={"center"}
+        justifyContent={"center"}
         overflowX={"hidden"}
-        bg={useColorModeValue("gray.50", "gray.800")}
+        bg={"#fafbfc"}
       >
         <Stack mx={"auto"} maxW={"xl"} py={2} px={6}>
           <Box
-            rounded={"lg"}
-            bg={useColorModeValue("white", "gray.700")}
-            boxShadow={"lg"}
-            p={7}
+            bg={"#ffff"}
+            boxShadow={"none"}
+            border={" 1px solid #eaebf1"}
+            borderRadius={"20px"}
+            minWidth={"600px"}
+            width={"600px"}
+            p={"30px"}
           >
             <FormHeaderContent />
             <Stack marginTop={"20px"} spacing={4}>
@@ -65,7 +63,7 @@ const Login = () => {
                 <FormInput
                   isRequired={true}
                   type='email'
-                  label='Email'
+                  label='Email Address'
                   name='email'
                   placeholder='Work mail address (eg: joe@example.com)'
                   value={values?.email}
@@ -85,7 +83,8 @@ const Login = () => {
                   touched={touched?.password}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  rightAddOn={
+                >
+                  <InputRightElement minHeight={"50px"} height={"auto"}>
                     <Image
                       onClick={handleToggle}
                       src={
@@ -96,47 +95,41 @@ const Login = () => {
                       height={20}
                       style={{ cursor: "pointer" }}
                     />
-                  }
-                />
+                  </InputRightElement>
+                </FormInput>
 
                 <Box
                   display={"flex"}
                   alignItems={"center"}
                   justifyContent={"center"}
                   width={"full"}
-                  marginBottom={"18px"}
+                  marginBottom={"20px"}
                 >
                   <Heading
                     fontWeight={400}
                     textAlign={"center"}
                     textColor={"#1c294a"}
-                    size='sm'
+                    fontSize={"15px"}
                   >
                     Don't have an account ?
                   </Heading>
                   <Heading
+                    fontSize={"15px"}
                     cursor={"pointer"}
                     textColor={"#151d48"}
                     paddingLeft={"5px"}
                     textAlign={"center"}
-                    size='sm'
+                    fontWeight={600}
+                    _hover={{
+                      textDecoration: "underline",
+                      textUnderlineOffset: "1px",
+                    }}
                   >
                     Register
                   </Heading>
                 </Box>
                 <Stack spacing={10}>
-                  <Button
-                    type='submit'
-                    padding={"25px"}
-                    margin={"0 auto"}
-                    bg={"#151d48"}
-                    color={"white"}
-                    _hover={{
-                      bg: "#151d48",
-                    }}
-                  >
-                    Sign in
-                  </Button>
+                  <AppButton type='submit'>Sign in</AppButton>
                 </Stack>
               </form>
             </Stack>

@@ -41,7 +41,16 @@ const FromWrapper = ({
       isInvalid={isInvalid}
       {...wrapperProps}
     >
-      {label && <FormLabel {...labelProps}>{label}</FormLabel>}
+      {label && (
+        <FormLabel
+          color={"#737791"}
+          fontWeight={600}
+          fontSize={"0.875rem"}
+          {...labelProps}
+        >
+          {label}
+        </FormLabel>
+      )}
       <InputGroup width='100%' alignItems='center'>
         {children}
       </InputGroup>

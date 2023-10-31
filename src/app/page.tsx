@@ -1,9 +1,9 @@
-import Login from "@/pages/Login";
+import Login from "@/containers/login/Login";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Login />
-    </main>
+    </>
   );
 }
