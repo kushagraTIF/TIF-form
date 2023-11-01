@@ -128,7 +128,7 @@ const Login = () => {
                     Register
                   </Heading>
                 </Box>
-                <Stack spacing={10}>
+                <Stack width={"max-content"} margin={"20px auto"} spacing={10}>
                   <AppButton type='submit'>Sign in</AppButton>
                 </Stack>
               </form>

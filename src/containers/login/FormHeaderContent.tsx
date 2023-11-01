@@ -79,7 +79,7 @@ const FormHeaderContent = () => {
             fontWeight={500}
             fontSize={"15px"}
             _hover={{
-              bg: "gray.200",
+              bg: "#ECEDF2",
             }}
           >
             Sign in with Microsoft
